@@ -1,0 +1,57 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    min-width: 720px;
+}
+#app {
+    table {
+        width: 100%;
+        tr {
+            display: flex;
+            // justify-content:space-between;
+            width: 100%;
+            td {
+                text-align: center;
+                line-height: 28px;
+                height: 28px;
+                font-size: 14px;
+                // word-wrap: normal;
+                white-space:nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                &:nth-child(1),
+                &:nth-child(3) {
+                    width: 8em;
+                }
+                &:nth-child(2) {
+                    width: 10em;
+                }
+                &:nth-child(4),
+                &:nth-child(5) {
+                    width: 5em;
+                }
+                &:nth-child(6) {
+                    width: 40em;
+                }
+                &:nth-child(7) {
+                    width: 10em;
+                }
+            }
+        }
+        thead {
+            tr {
+                background-color: rgb(0, 115, 247);
+                
+            }
+        }
+        tbody {
+            tr {
+                &:nth-child(odd) {
+                    background-color: rgb(194, 194, 194);
+                }
+            }
+        }
+    }
+}

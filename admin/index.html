@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+
+<body>
+    <!-- xboxId: {
+		type: String,
+		required: true
+	},
+	xuid: {
+		type: Number
+	},
+	qq: {
+		type: Number,
+		required: true
+	},
+	credit: {
+		type: Number,
+		// required: true,
+		default: 12
+	},
+	remarks: {
+		type: [String]
+	} -->
+    <h1>庄主基岩服 白名单管理</h1>
+    <div id="app">
+
+        <table>
+            <thead>
+                <tr>
+                    <td>xboxId</td>
+                    <td>xuid</td>
+                    <td>qq</td>
+                    <td>信誉分</td>
+                    <td>状态</td>
+                    <td>备注</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <td>moonboss666q</td>
+                    <td>2535426374753509</td>
+                    <td>05213131123</td>
+                    <td>06</td>
+                    <td>正常</td>
+                    <td>06efsefsgggggggggggggggggggggggg</td>
+                    <td><button>1212</button><button>1212</button><button>1212</button></td>
+                </tr> -->
+                <tr v-for="item in list">
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.xuid }}</td>
+                    <td>{{ item.qq }}</td>
+                    <td>{{ item.credit }}</td>
+                    <td>{{ item.status }}</td>
+                    <td>
+                        <a v-for="remarks in item.remarks" :title="remarks">
+                            <span>{{ remarks.dateformat }} &nbsp; {{ remarks.text }}&nbsp;&nbsp;</span>
+                        </a>
+                    </td>
+                    <td>
+                        <button>修改</button>
+                        <!-- <button>封禁</button> -->
+                        <button>查看详情</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

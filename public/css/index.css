@@ -1,0 +1,65 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  width: 100%;
+  background-color: #e7e7e7;
+}
+#app .query {
+  font-size: 0px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 100px;
+}
+#app .query * {
+  font-size: medium;
+}
+#app .query input {
+  width: 80%;
+  height: 50px;
+  border: none;
+  background-color: #fff;
+  outline: none;
+  border-radius: 10px 0 0 10px;
+  border: solid 2px #00008f;
+  font-size: 20px;
+  padding-left: 1em;
+}
+#app .query button {
+  width: 100px;
+  height: 54px;
+  border: none;
+  background-color: #fff;
+  outline: none;
+  border-radius: 0 10px 10px 0;
+  border: solid 2px #00008f;
+  border-left: none;
+}
+#app .info {
+  width: 80%;
+  margin: 50px auto;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+#app .info .user {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#app .info .remarks {
+  display: flex;
+  flex-direction: column-reverse;
+}
+#app .info .remarks p {
+  background-color: #fff;
+}
+#app .info .remarks p:nth-child(odd) {
+  background-color: #ececec;
+}
+#app .info span p {
+  text-align: center;
+  margin-bottom: 10px;
+}

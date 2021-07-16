@@ -1,0 +1,24 @@
+{
+  "name": "moonWL",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dateformat": "^4.5.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "log4js": "^6.3.0",
+    "md5": "^2.3.0",
+    "mongoose": "^5.13.2",
+    "ws": "^7.5.3"
+  }
+}

@@ -1,0 +1,31 @@
+/* version:test1.2 */
+/* 初始化 开始 */
+body,
+div,
+span,
+input,
+form,
+input,
+h1,
+h2,
+h3,
+p,
+a,
+tr,
+td {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  /* text-align: center; */
+}
+body {
+  background-color: #e4e4e4;
+}
+a {
+  color: #910000;
+  text-decoration: none;
+}
+a:hover {
+  color: #00a2ff;
+}
+/* 初始化 结束 */

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./common/js/vue.min.js"></script>
+    <script src="./common/js/axios.min.js"></script>
+</head>
+
+<body>
+    <!-- <h1>庄主基岩服 白名单信息查询</h1> -->
+    <div id="app">
+        <div class="query">
+            <input type="text" v-model="wd">
+            <button @click="query">查询</button>
+        </div>
+        <div class="info" v-show="isShow">
+            <div class="user">
+                <span>
+                    <p>信用分</p>
+                    <p>{{ info.credit }}</p>
+                </span>
+                <span>
+                    <p>状态</p>
+                    <p>{{ info.status }}</p>
+                </span>
+                <span>
+                    <p>qq</p>
+                    <p>{{ info.qq }}</p>
+                </span>
+                <span>
+                    <p>游戏id</p>
+                    <p>{{ info.name }}</p>
+                </span>
+            </div>
+            <div class="remarks" >
+                <p>若有疑议请联系管理</p>
+                <p v-for="item in info.remarks">{{ item.dateformat }} &nbsp; {{ item.text }}</p>
+            </div>
+        </div>
+        <div class="info" v-show="errShow">
+            <h1>未查询到结果</h1>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
