@@ -9,15 +9,20 @@
     <link rel="stylesheet" href="./css/edit.css">
     <script src="/public/common/js/vue.min.js"></script>
     <script src="/public/common/js/axios.min.js"></script>
-    <script src="./js/edit.js"></script>
+    <!-- <link rel="stylesheet" href="/public/common/laydate/theme/default/laydate.css" media="all"> -->
 </head>
 
 <body>
+
     <div id="app">
         <div>
             <button>封禁</button>
-            <button>删白名</button>
-            <!-- <button></button> -->
+            <button @click="removeWl">删白名</button>
+        </div>
+        <div id="ban">
+            封禁原因：<input type="text" v-model="banText"><br>
+            封禁时长：<input type="text" v-model="banTime">小时<br>
+            <button @click="ban">提交</button>
         </div>
         <div class="info">
             <div class="user">
@@ -38,12 +43,14 @@
                     <p>{{ info.name }}</p>
                 </span>
             </div>
-            <div class="remarks" >
-                <p>若有疑议请联系管理</p>
+            <div class="remarks">
+                <p>若有疑议请联系星猩</p>
+                <p>刷新本页面不会更新数据，若需更新，请返回<a href="javascript:window.close();">列表页</a>重新打开</p>
                 <p v-for="item in info.remarks">{{ item.dateformat }} &nbsp; {{ item.text }}</p>
             </div>
         </div>
     </div>
+    <script src="./js/edit.js"></script>
 </body>
 
 </html>

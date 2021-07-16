@@ -30,6 +30,9 @@ logger.info("配置文件加载成功");
 logger.info("加载白名单插件")
 require("./modules/wl");
 
+logger.info("加载unban")
+require("./modules/unban");
+
 logger.info(`链接数据库 ${config.dbUrl}`)
 require("./modules/connect");
 
@@ -74,6 +77,7 @@ app.post("/public/adminLogin", (req, res) => {
         userInfo = JSON.parse(userInfo);
         if(userInfo.password == md5(req.body.password)) {
             req.session.isLogin = true;
+            req.session.username = req.body.username;
             res.redirect("/admin");
             return;
         }

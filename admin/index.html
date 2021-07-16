@@ -57,7 +57,7 @@
                     <td>06efsefsgggggggggggggggggggggggg</td>
                     <td><button>1212</button><button>1212</button><button>1212</button></td>
                 </tr> -->
-                <tr v-for="item in list">
+                <tr v-for="(item, index) in list">
                     <td>{{ item.name }}</td>
                     <td>{{ item.xuid }}</td>
                     <td>{{ item.qq }}</td>
@@ -69,7 +69,7 @@
                         </a>
                     </td>
                     <td>
-                        <button>修改</button>
+                        <button @click="edit(index)">修改</button>
                         <!-- <button>封禁</button> -->
                         <button>查看详情</button>
                     </td>

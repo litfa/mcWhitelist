@@ -39,6 +39,10 @@ window.onload = () => {
                     console.log(err);
                 })
 
+            },
+            edit: function(index){
+                console.log(JSON.stringify(this.list[index]));
+                window.open(`./edit.html?info=${JSON.stringify(this.list[index])}`)
             }
         }
     })
