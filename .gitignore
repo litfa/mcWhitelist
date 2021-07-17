@@ -6,3 +6,5 @@ config.js
 node_modules
 node_modules/
 logs
+
+whitelistfile/*.json
