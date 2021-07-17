@@ -3,21 +3,7 @@ const api = require("./api");
 
 async function run() {
     let wl = [
-        {
-            "ignoresPlayerLimit": false,
-            "name": "xing2233",
-            "xuid": "2535433761974932"
-        },
-        {
-            "ignoresPlayerLimit": false,
-            "name": "moonboss666",
-            "xuid": "2535406877312380"
-        },
-        {
-            "ignoresPlayerLimit": false,
-            "name": "MC Sksjsn",
-            "xuid": "2535420062268299"
-        }
+
     ]
     
     for (i in wl) {
