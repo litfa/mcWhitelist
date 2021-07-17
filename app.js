@@ -30,8 +30,10 @@ logger.info("配置文件加载成功");
 logger.info("加载白名单插件")
 require("./modules/wl");
 
-logger.info("加载unban")
+logger.info("加载自动同步模块")
 require("./modules/unban");
+// logger.info("加载unban")
+require("./modules/syncWl");
 
 logger.info(`链接数据库 ${config.dbUrl}`)
 require("./modules/connect");

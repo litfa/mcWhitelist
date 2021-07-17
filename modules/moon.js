@@ -11,15 +11,15 @@ const moonboos = new mongoose.Schema({
 	name: {
 		type: String,
 		// required: true,
-		unique:true,
+		// unique:true,
 	},
 	xuid: {
 		type: String
 	},
 	qq: {
 		type: Number,
-		required: true,
-		unique: true,
+		// required: true,
+		// unique: true,
 	},
 	credit: {
 		type: Number,
@@ -28,7 +28,7 @@ const moonboos = new mongoose.Schema({
 	},
 	status: {
 		type: String,
-		default: "正常"
+		// default: ""
 	},
 	remarks: {
 		type: [Object]

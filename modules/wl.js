@@ -77,7 +77,7 @@ async function run() {
             if (doc) {
                 // 是否为 退群 若退群 继续执行 若封禁 返回封禁原因
                 // 不是退群 不是正常 即为封禁 返回封禁原因
-                if (doc.status != "0" && doc.status != "1") {
+                if (doc.status != "0" && doc.status != "1" && doc.status != "5") {
                     api.qq.sendGroupMessage([
                         { "type": "At", "target": data.sender.id },
                         { "type": "Plain", "text": `申请失败，您已被封禁! \n` },
@@ -104,7 +104,7 @@ async function run() {
             var doc2 = await moon.findOne({ name: xboxName });
             console.log(doc2);
             // 若有 返回已被申请
-            if (doc2 && doc2.status != "0") {
+            if (doc2 && doc2.status != "0" && doc2.status != "5") {
                 api.qq.sendGroupMessage([
                     { "type": "At", "target": data.sender.id },
                     { "type": "Plain", "text": ` ${doc2.name} 申请失败，此id已被 ${doc2.qq} 申请` }
@@ -230,14 +230,14 @@ async function run() {
                 let isErr = 0;
                 if (config.mcsm.server == Object) {
                     for (i in config.mcsm.server) {
-                        var res = await api.mcsm.execute(`whitelist add "${doc.name}"`, config.mcsm.server[i]).then().catch(err => {
+                        var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server[i]).then().catch(err => {
                             console.log(err);
                             isErr++;
                         })
                     }
                     // 否则只有单个
                 } else {
-                    var res = await api.mcsm.execute(`whitelist add "${doc.name}"`, config.mcsm.server).then().catch(err => {
+                    var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server).then().catch(err => {
                         console.log(err);
                         isErr++;
                     });
@@ -388,7 +388,7 @@ async function run() {
 
             var msg = data.messageChain[1].text.split(".wl ");
 
-            if(msg[1].indexOf("ban ") != -1) {
+            if (msg[1].indexOf("ban ") != -1) {
                 xboxName = msg[1].split("ban ");
             }
 
@@ -564,6 +564,9 @@ async function run() {
                         break;
                     case "4":
                         status = "临时封禁且不在群聊";
+                        break;
+                    case "5":
+                        status = "数据异常";
                         break;
                     default:
                         break;
