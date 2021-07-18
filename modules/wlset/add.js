@@ -9,7 +9,7 @@ let wlAdd = async (data) => {
         data.messageChain[1].text.indexOf(".申请白名单 ") == 0
     ) {
         // 游戏名
-        xboxName = data.messageChain[1].text.split(".申请白名单 ")[1];
+        let xboxName = data.messageChain[1].text.split(".申请白名单 ")[1];
         console.log(xboxName);
 
         // 名字是否不合法
