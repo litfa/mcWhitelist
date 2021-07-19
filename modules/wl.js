@@ -6,17 +6,18 @@
  * 3 永久封禁
  */
 
-// const { Logger } = require("log4js");
-const ws = require("ws");
-// const axios = require("axios");
-const api = require("./api");
-const moon = require("./moon");
+// const { Logger } = require("log4js")
+const ws = require("ws")
+// const axios = require("axios")
+const api = require("./api")
+const moon = require("./moon")
 const wladd = require("./wlset/add")
 const wlKick = require("./wlset/kick")
 const wlQuit = require("./wlset/quit")
 const wlQuery = require("./wlset/query")
 const wlMenu = require("./wlset/menu")
 const wlSend = require("./wlset/send")
+const wlExecute = require("./wlset/execute")
 // const wlEdit = require("./wlEdit")
 
 // console.log(api);
@@ -149,32 +150,42 @@ async function run() {
                             { "type": "Plain", "text": ` 玩家 ${msg} 已成功从数据库移除` }
                         ], config.mirai.group);
                     })
-                    // mcsm操作
-                    // let isErr =  wlEdit();
-                    let isErr = 0;
-                    if (config.mcsm.server == Object) {
-                        for (i in config.mcsm.server) {
-                            var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server[i]).then().catch(err => {
-                                console.log(err);
-                                isErr++;
-                            })
-                        }
-                        // 否则只有单个
-                    } else {
-                        var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server).then().catch(err => {
-                            console.log(err);
-                            isErr++;
-                        });
-                    }
-                    if (isErr > 0) {
+                    // // mcsm操作
+                    let status = await wlExecute(`whitelist remove "${doc.name}"`)
+                    if (status.status == 0) {
                         api.qq.sendGroupMessage([
                             { "type": "Plain", "text": `白名单删除异常 ${isErr}` }
                         ], config.mirai.group);
-                    } else {
+                    } else if (status.status == 1) {
                         api.qq.sendGroupMessage([
                             { "type": "Plain", "text": `已成功删除 ${msg}[${doc.qq}] 的白名单` }
                         ], config.mirai.group)
                     }
+                    // // let isErr =  wlEdit();
+                    // let isErr = 0;
+                    // if (config.mcsm.server == Object) {
+                    //     for (i in config.mcsm.server) {
+                    //         var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server[i]).then().catch(err => {
+                    //             console.log(err);
+                    //             isErr++;
+                    //         })
+                    //     }
+                    //     // 否则只有单个
+                    // } else {
+                    //     var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server).then().catch(err => {
+                    //         console.log(err);
+                    //         isErr++;
+                    //     });
+                    // }
+                    // if (isErr > 0) {
+                    //     api.qq.sendGroupMessage([
+                    //         { "type": "Plain", "text": `白名单删除异常 ${isErr}` }
+                    //     ], config.mirai.group);
+                    // } else {
+                    //     api.qq.sendGroupMessage([
+                    //         { "type": "Plain", "text": `已成功删除 ${msg}[${doc.qq}] 的白名单` }
+                    //     ], config.mirai.group)
+                    // }
                 } else {
                     api.qq.sendGroupMessage([
                         { "type": "Plain", "text": `白名单中没有此人` }
@@ -223,26 +234,12 @@ async function run() {
                     })
                     // mcsm操作
                     // let isErr =  wlEdit();
-                    let isErr = 0;
-                    if (config.mcsm.server == Object) {
-                        for (i in config.mcsm.server) {
-                            var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server[i]).then().catch(err => {
-                                console.log(err);
-                                isErr++;
-                            })
-                        }
-                        // 否则只有单个
-                    } else {
-                        var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server).then().catch(err => {
-                            console.log(err);
-                            isErr++;
-                        });
-                    }
-                    if (isErr > 0) {
+                    let status = await wlExecute(`whitelist remove "${doc.name}"`)
+                    if (status.status == 0) {
                         api.qq.sendGroupMessage([
                             { "type": "Plain", "text": `白名单删除异常 ${isErr}` }
                         ], config.mirai.group);
-                    } else {
+                    } else if (status.status == 1) {
                         api.qq.sendGroupMessage([
                             { "type": "Plain", "text": `已成功删除 ${msg}[${doc.qq}] 的白名单` }
                         ], config.mirai.group)

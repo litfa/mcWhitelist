@@ -25,30 +25,14 @@ let wlKick = async (data) => {
             })
             // mcsm操作
             // let isErr =  wlEdit();
-            let isErr = 0;
-            if (config.mcsm.server == Object) {
-                for (i in config.mcsm.server) {
-                    var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server[i]).then().catch(err => {
-                        console.log(err);
-                        isErr++;
-                    })
-                }
-                // 否则只有单个
-            } else {
-                var res = await api.mcsm.execute(`whitelist remove "${doc.name}"`, config.mcsm.server).then().catch(err => {
-                    console.log(err);
-                    isErr++;
-                });
-            }
-            if (isErr > 0) {
+            let status = await wlExecute(`whitelist remove "${doc.name}`)
+            if (status.status == 0) {
                 api.qq.sendGroupMessage([
-                    { "type": "At", "target": data.operator.id },
-                    { "type": "Plain", "text": `白名单删除异常 ${isErr}` }
+                    { "type": "Plain", "text": `白名单删除失败 ${status.isErr}` }
                 ], config.mirai.group);
-            } else {
+            } else if (status.status == 1) {
                 api.qq.sendGroupMessage([
-                    { "type": "At", "target": data.operator.id },
-                    { "type": "Plain", "text": `已成功拉黑 ${data.member.memberName}[${data.member.id}] ` }
+                    { "type": "Plain", "text": `成功删除 ${doc.name} 的白名单` }
                 ], config.mirai.group)
             }
         } else {

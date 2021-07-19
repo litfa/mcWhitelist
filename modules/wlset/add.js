@@ -1,6 +1,7 @@
 
 const api = require("./../api");
 const moon = require("./../moon");
+const wlExecute = require("./execute")
 
 let wlAdd = async (data) => {
     if (data.type == "GroupMessage" &&
@@ -132,34 +133,17 @@ let wlAdd = async (data) => {
 
         // 添加白名单
         // 若为数组（对象） 遍历
-        // let isErr =  wlEdit("add", xboxName);
-        // console.log(isErr);
-        let isErr = 0;
-        if (config.mcsm.server == Object) {
-            for (i in config.mcsm.server) {
-                var res = await api.mcsm.execute(`whitelist add "${xboxName}"`, config.mcsm.server[i]).then().catch(err => {
-                    console.log(err);
-                    isErr++;
-                })
-            }
-            // 否则只有单个
-        } else {
-            var res = await api.mcsm.execute(`whitelist add "${xboxName}"`, config.mcsm.server).then().catch(err => {
-                console.log(err);
-                isErr++;
-            });
-        }
-        if (isErr > 0) {
+        let status = await wlExecute(`whitelist add "${doc.name}`)
+        if (status.status == 0) {
             api.qq.sendGroupMessage([
-                { "type": "At", "target": data.sender.id },
-                { "type": "Plain", "text": ` 申请失败，白名单添加异常 ${isErr}` }
+                { "type": "Plain", "text": `申请失败，白名单添加失败 ${status.isErr}` }
             ], config.mirai.group);
-        } else {
+        } else if (status.status == 1) {
             api.qq.sendGroupMessage([
-                { "type": "At", "target": data.sender.id },
-                { "type": "Plain", "text": ` 申请成功，成功将 ${xboxName} 加入白名单！` }
+                { "type": "Plain", "text": `申请成功，成功将 ${doc.name} 加入白名单` }
             ], config.mirai.group)
         }
+
     }
 }
 module.exports = wlAdd;
