@@ -16,6 +16,7 @@ const wlKick = require("./wlset/kick")
 const wlQuit = require("./wlset/quit")
 const wlQuery = require("./wlset/query")
 const wlMenu = require("./wlset/menu")
+const wlSend = require("./wlset/send")
 // const wlEdit = require("./wlEdit")
 
 // console.log(api);
@@ -87,6 +88,7 @@ async function run() {
         */
 
         // 管理员操作
+        wlSend(data)
         function getValue(arr, index) {
             for (var i in arr) {
                 if (arr[i] == index) {
