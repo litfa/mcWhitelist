@@ -10,7 +10,7 @@ let wlMenu = async (data) => {
     ) {
         api.qq.sendGroupMessage([
             { "type": "At", "target": data.sender.id },
-            { "type": "Plain", "text": ` \nxingWl v1.1.0\n使用 \n.申请白名单 id 申请白名单\n使用 .查询qq / .查询id 查询 id/qq` }
+            { "type": "Plain", "text": ` \nxingWl v1.1.1\n使用 \n.申请白名单 id 申请白名单\n使用 .查询qq / .查询id 查询 id/qq` }
         ], config.mirai.group);
     }
 }
