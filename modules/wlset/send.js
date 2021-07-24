@@ -3,14 +3,14 @@ const api = require("./../api");
 const moon = require("./../moon");
 const wlExecute = require("./execute")
 
-function getValue(arr, index) {
-    for (var i in arr) {
-        if (arr[i] == index) {
-            return true;
-        }
-    }
-    return false;
-}
+// function getValue(arr, index) {
+//     for (var i in arr) {
+//         if (arr[i] == index) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 const wlSend = async (data) => {
     if (data.type == "GroupMessage" &&
@@ -19,13 +19,13 @@ const wlSend = async (data) => {
         data.messageChain[1].text.indexOf(".wl ") == 0
 
     ) {
-        if (!getValue(config.mirai.op, data.sender.id)) {
-            api.qq.sendGroupMessage([
-                { "type": "At", "target": data.sender.id },
-                { "type": "Plain", "text": ` 你没有权限这样做` }
-            ], config.mirai.group);
-            return;
-        }
+        // if (!getValue(config.mirai.op, data.sender.id)) {
+        //     api.qq.sendGroupMessage([
+        //         { "type": "At", "target": data.sender.id },
+        //         { "type": "Plain", "text": ` 你没有权限这样做` }
+        //     ], config.mirai.group);
+        //     return;
+        // }
         var msg = data.messageChain[1].text.split(".wl ");
         if (msg[1].indexOf("send ") != -1) {
             msg = msg[1].split("send ");
@@ -34,7 +34,7 @@ const wlSend = async (data) => {
             let status = await wlExecute(msg[1])
             if (status.status == 0) {
                 api.qq.sendGroupMessage([
-                    { "type": "Plain", "text": `发送失败 ${isErr}` }
+                    { "type": "Plain", "text": `发送失败 ${status.isErr}` }
                 ], config.mirai.group);
             } else if (status.status == 1) {
                 api.qq.sendGroupMessage([
