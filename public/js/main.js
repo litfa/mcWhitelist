@@ -8,11 +8,22 @@ let app = new Vue({
         errShow: false,
         info: {}
     },
+    created: function () {
+        console.log("qwqwq " + Date.now());
+        this.query();
+    },
     methods: {
+        getValue: function (name) {
+            return decodeURIComponent(
+                (new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null;
+        },
         query: function () {
             let that = this;
-            axios.get(`/api/public/query?wd=${that.wd}`).then(res => {
-                if(res.data.status != 200) {
+            let wd = that.getValue("wd")
+            console.log(wd);
+            this.wd = wd;
+            axios.get(`/api/public/query?wd=${wd}`).then(res => {
+                if (res.data.status != 200) {
                     that.errShow = true;
                     return;
                 }

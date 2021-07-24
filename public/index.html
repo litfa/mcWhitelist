@@ -14,10 +14,12 @@
 <body>
     <!-- <h1>庄主基岩服 白名单信息查询</h1> -->
     <div id="app">
-        <div class="query">
-            <input type="text" v-model="wd">
-            <button @click="query">查询</button>
-        </div>
+        <form action="./" method="get">
+            <div class="query">
+                <input type="text" name="wd" v-model="wd">
+                <button type="submit">查询</button>
+            </div>
+        </form>
         <div class="info" v-show="isShow">
             <div class="user">
                 <span>
@@ -37,7 +39,7 @@
                     <p>{{ info.name }}</p>
                 </span>
             </div>
-            <div class="remarks" >
+            <div class="remarks">
                 <p>若有疑议请联系管理</p>
                 <p v-for="item in info.remarks">{{ item.dateformat }} &nbsp; {{ item.text }}</p>
             </div>
