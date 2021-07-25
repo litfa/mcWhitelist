@@ -19,6 +19,7 @@ const wlMenu = require("./wlset/menu")
 const wlSend = require("./wlset/send")
 const wlExecute = require("./wlset/execute")
 const wlOpEdit = require("./wlset/opEdit")
+// const wlJoinGroup = require("./joinGroup")
 // const wlEdit = require("./wlEdit")
 
 // console.log(api);
@@ -45,6 +46,9 @@ async function run() {
         // console.log(data.messageChain[1].type);
         // console.log(data.sender.group.id);
         // console.log( data.messageChain[1].text.indexOf(".申请白名单 "));       
+
+        // 入群申请
+        // wlJoinGroup(data)
 
         // 群消息
         // 文本

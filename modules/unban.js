@@ -44,7 +44,7 @@ schedule.scheduleJob("0 * * * * *", async () => {
             console.log(`已解封${doc[i].name}`);
         }).catch(err => {
             console.log(err);
-            
+
         })
     }
 })
