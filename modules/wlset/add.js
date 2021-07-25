@@ -133,7 +133,7 @@ let wlAdd = async (data) => {
 
         // 添加白名单
         // 若为数组（对象） 遍历
-        let status = await wlExecute(`whitelist add "${xboxName}`)
+        let status = await wlExecute(`whitelist add "${xboxName}"`)
         if (status.status == 0) {
             api.qq.sendGroupMessage([
                 { "type": "Plain", "text": `申请失败，白名单添加失败 ${status.isErr}` }

@@ -25,7 +25,7 @@ let wlKick = async (data) => {
             })
             // mcsm操作
             // let isErr =  wlEdit();
-            let status = await wlExecute(`whitelist remove "${doc.name}`)
+            let status = await wlExecute(`whitelist remove "${doc.name}"`)
             if (status.status == 0) {
                 api.qq.sendGroupMessage([
                     { "type": "Plain", "text": `白名单删除失败 ${status.isErr}` }
