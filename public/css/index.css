@@ -6,12 +6,16 @@ body {
   width: 100%;
   background-color: #e7e7e7;
 }
+#app h1 {
+  text-align: center;
+  margin-top: 50px;
+}
 #app .query {
   font-size: 0px;
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-top: 100px;
+  margin-top: 60px;
 }
 #app .query * {
   font-size: medium;

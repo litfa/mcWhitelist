@@ -1,73 +1,77 @@
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-    width: 100%;
-    background-color: rgb(231, 231, 231);
+  width: 100%;
+  background-color: rgb(231, 231, 231);
 }
 
 #app {
-    .query {
-        font-size: 0px;
-        * {
-            font-size: medium;
-        }
-        display: flex;
-        width: 100%;
-        justify-content: center;
-        margin-top: 100px;
-        input {
-            width: 80%;
-            height: 50px;
-            border: none;
-            background-color: #fff;
-            outline:none;
-            border-radius: 10px 0 0 10px;
-            border: solid 2px rgb(0, 0, 143);
-            // border-right: none;
-            font-size: 20px;
-            padding-left: 1em;
-        }
-        button {
-            width: 100px;
-            height: 54px;
-            border: none;
-            background-color: #fff;
-            outline:none;
-            border-radius: 0 10px 10px 0;
-            border: solid 2px rgb(0, 0, 143);
-            border-left: none;
-        }
+  h1 {
+    text-align: center;
+    margin-top: 50px;
+  }
+  .query {
+    font-size: 0px;
+    * {
+      font-size: medium;
     }
-    .info {
-        width: 80%;
-        margin: 50px auto;
-        padding: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 60px;
+    input {
+      width: 80%;
+      height: 50px;
+      border: none;
+      background-color: #fff;
+      outline: none;
+      border-radius: 10px 0 0 10px;
+      border: solid 2px rgb(0, 0, 143);
+      // border-right: none;
+      font-size: 20px;
+      padding-left: 1em;
+    }
+    button {
+      width: 100px;
+      height: 54px;
+      border: none;
+      background-color: #fff;
+      outline: none;
+      border-radius: 0 10px 10px 0;
+      border: solid 2px rgb(0, 0, 143);
+      border-left: none;
+    }
+  }
+  .info {
+    width: 80%;
+    margin: 50px auto;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    // height: 100px;
+    .user {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .remarks {
+      display: flex;
+      flex-direction: column-reverse;
+      p {
         background-color: #fff;
-        border-radius: 5px;
-        // height: 100px;
-        .user {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        &:nth-child(odd) {
+          background-color: rgb(236, 236, 236);
         }
-        .remarks {
-            display: flex;
-            flex-direction: column-reverse;
-            p {
-                background-color: #fff;
-                &:nth-child(odd) {
-                    background-color: rgb(236, 236, 236);
-                }
-            }
-        }
-        span {
-            p {
-                text-align: center;
-                margin-bottom: 10px;
-            }
-        }
+      }
     }
+    span {
+      p {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+    }
+  }
 }

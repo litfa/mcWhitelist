@@ -9,11 +9,22 @@
     <link rel="stylesheet" href="./css/index.css">
     <script src="./common/js/vue.min.js"></script>
     <script src="./common/js/axios.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?edeb3b2421167f19ee804ff267dc462f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
 </head>
 
 <body>
     <!-- <h1>庄主基岩服 白名单信息查询</h1> -->
     <div id="app">
+        <h1>白名单信息查询</h1>
         <form action="./" method="get">
             <div class="query">
                 <input type="text" name="wd" v-model="wd">
