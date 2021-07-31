@@ -49,7 +49,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/public", express.static('./public'));
-
+app.use((req, res, next) => {
+    if (config.localPropertyIs_allow_csrf) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Methods", "GET, POST");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header("Access-Control-Allow-Headers", "Content-Type");
+    }
+    res.header("X-Frame-Options", "DENY");
+    next();
+});
 app.use("/api/public", require("./router/api_public"));
 
 app.use(cookieParser());
@@ -62,9 +71,9 @@ app.use(session({
 
 // 用户权限
 app.use(["/admin", "/api/admin"], (req, res, next) => {
-    if(req.session.isLogin || req.path == "/public/adminLogin") {
+    if (req.session.isLogin || req.path == "/public/adminLogin") {
         next();
-    }else{
+    } else {
         res.redirect("/public/adminLogin");
     }
 })
@@ -74,21 +83,21 @@ app.post("/public/adminLogin", (req, res) => {
     //     return;
     // }
     console.log(req.body);
-    try{
+    try {
         let userInfo = fs.readFileSync(`./users/${req.body.username}.json`, "utf8");
         userInfo = JSON.parse(userInfo);
-        if(userInfo.password == md5(req.body.password)) {
+        if (userInfo.password == md5(req.body.password)) {
             req.session.isLogin = true;
             req.session.username = req.body.username;
             res.redirect("/admin");
             return;
         }
-    }catch(e) {
+    } catch (e) {
         console.log(e);
     }
-    if(req.session.errLogin) {
+    if (req.session.errLogin) {
         req.session.errLogin++;
-    }else{
+    } else {
         req.session.errLogin = 0;
     }
     res.send("<h1>账号或密码错误！</h1>");

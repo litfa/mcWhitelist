@@ -13,3 +13,5 @@ config.mcsm.apiKey = "52d24b9d23d64e11b04550a70b32e3eb";
 config.mcsm.server = ["mc", "becz"];
 
 config.port = 3000;
+
+config.localPropertyIs_allow_csrf = false
