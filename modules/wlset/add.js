@@ -25,7 +25,7 @@ let wlAdd = async (data) => {
         if (data.sender.memberName.indexOf(xboxName) == -1) {
             api.qq.sendGroupMessage([
                 { "type": "At", "target": data.sender.id },
-                { "type": "Plain", "text": `在申请申请白名单之前，请确保你的群昵称中包含你的游戏id！` }
+                { "type": "Plain", "text": `在申请白名单之前，请确保你的群昵称中包含你的游戏id！` }
             ], config.mirai.group);
             return;
         }
