@@ -134,18 +134,3 @@ async function run() {
 }
 run()
 
-/*
-{
-  type: 'GroupMessage',
-  messageChain: [
-    { type: 'Source', id: 31077, time: 1625981090 },
-    { type: 'Plain', text: 'b站名字多少' }
-  ],
-  sender: {
-    id: 1260564171,
-    memberName: '风起浪飘',
-    permission: 'MEMBER',
-    group: { id: 943016907, name: 'WLZ Pack材质交流群', permission: 'MEMBER' }
-  }
-}
-*/
